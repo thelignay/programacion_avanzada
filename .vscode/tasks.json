@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            // Ruta a tu ejecutable compilado (debe incluir símbolos -g)
+            "program": "${workspaceFolder}/main", 
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // Ejecutar 'gcc -g main.c -o main' antes de depurar
+            "preLaunchTask": "gcc build active file", 
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

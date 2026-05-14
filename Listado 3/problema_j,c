@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int n, primer_caso = 1;
+
+    // Leemos n,el ciclo termina cuando n es 0
+    while (scanf("%d", &n) == 1 && n != 0) {
+        char nombres[n][21];
+        for (int i = 0; i < n; i++) {
+            scanf("%s", nombres[i]);
+        }
+
+        //buble sort
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                int comparar = 0;
+                if (nombres[j][0] != nombres[j+1][0]) {
+                    comparar = nombres[j][0] - nombres[j+1][0];
+                } else {
+                    comparar = nombres[j][1] - nombres[j+1][1];
+                }
+                if (comparar > 0) {
+                    char temp[21];
+                    strcpy(temp, nombres[j]);
+                    strcpy(nombres[j], nombres[j+1]);
+                    strcpy(nombres[j+1], temp);
+                }
+            }
+        }
+
+        if (!primer_caso) printf("\n");
+        primer_caso = 0;
+
+        for (int i = 0; i < n; i++) {
+            printf("%s\n", nombres[i]);
+        }
+    }
+    return 0;
+}
