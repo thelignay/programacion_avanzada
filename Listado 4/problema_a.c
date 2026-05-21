@@ -1,14 +1,13 @@
 #include <stdio.h>
-int i=3;
 int S[101]={};
 
-int recursive(int n){
-    if (i<n)
+int recursive(int i,int n){
+    if (i<=n)
     {
         S[i]= S[i-1] + S[i-2] + S[i-3];
-        recursive(i++);
+        return recursive(++i, n);
     }
-    if(i>n){
+    else{
         return S[n];
     }  
 }
@@ -21,7 +20,8 @@ int main(){
     S[0]=a;
     S[1]=b;
     S[2]=c;
-    int S = recursive(n);
-    printf("%d",S);
+    int i=3;
+    int Suma = recursive(i,n);
+    printf("%d",Suma);
     return 0;
 }
